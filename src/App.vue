@@ -1,26 +1,36 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <VButton name="Click Me!!" @click="isShowModal = true"/>
+  <VModal v-if="isShowModal" @close="isShowModal = false"/>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script lang="ts">
+import { defineComponent } from 'vue';
+import VButton from './components/v-button/v-button.vue';
+import VModal from './components/v-modal/v-modal.vue';
 
-export default {
+export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    VButton,
+    VModal
+  },
+  data: () => ({
+    isShowModal: false,
+  }),
+  methods: {
+
+  },
+});
 </script>
 
-<style>
+<style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
   margin-top: 60px;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
