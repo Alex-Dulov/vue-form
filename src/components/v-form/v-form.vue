@@ -95,12 +95,12 @@ export default defineComponent({
   methods: {
     onSubmit() {
       if (!this.v$.$invalid && this.v$.$anyDirty) {
-        axios.get(api.postUser)
+        axios.post(api.postUser)
             .then(response => {
-              console.log(response);
+              // console.log(response);
             })
             .catch(error => {
-              console.log(error);
+              // console.log(error);
             })
             .finally(() => {
               this.name = "";
@@ -108,7 +108,6 @@ export default defineComponent({
               this.mail = "";
               this.comment = "";
               this.v$.$reset();
-              console.log("submit");
             });
       }
     },
