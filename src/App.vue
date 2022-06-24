@@ -1,18 +1,22 @@
 <template>
   <VButton name="Click Me!!" @click="isShowModal = true"/>
-  <VModal v-if="isShowModal" @close="isShowModal = false"/>
+  <VModal v-if="isShowModal" @close="isShowModal = false">
+    <VForm/>
+  </VModal>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import VButton from './components/v-button/v-button.vue';
 import VModal from './components/v-modal/v-modal.vue';
+import VForm from './components/v-form/v-form.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
     VButton,
-    VModal
+    VModal,
+    VForm
   },
   data: () => ({
     isShowModal: false,

@@ -1,5 +1,5 @@
 <template>
-  <form class="v-form" action="#" @submit.prevent="onSubmit">
+  <form class="v-form" action="/" @submit.prevent="onSubmit">
     <h1 class="v-form__title">Lorem ipsum form</h1>
     <label class="v-form__label" for="name">
       <input class="v-form__input" id="name" type="text" placeholder="Name"
@@ -32,13 +32,32 @@
         Enter your comment
       </p>
     </label>
-    <VButton name="Submit" @click="onSubmit" :class="{'v-button--disable': v$.$invalid && v$.$anyDirty }"/>
+    <VButton name="Submit" type="submit" :class="{'v-button--disable': v$.$invalid && v$.$anyDirty }"/>
   </form>
+  <VModal v-if="isShowSuccess" @close="isShowSuccess = false">
+    <h4>
+      Your data has been successfully sent
+    </h4>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      Alias fugiat magnam maiores maxime necessitatibus quam!
+    </p>
+  </VModal>
+  <VModal v-if="isShowError" @close="isShowError = false">
+    <h4>
+      Error!!!
+    </h4>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      Alias fugiat magnam maiores maxime necessitatibus quam!
+    </p>
+  </VModal>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
-import VButton from "@/components/v-button/v-button";
+import VButton from "@/components/v-button/v-button.vue";
+import VModal from "@/components/v-modal/v-modal.vue";
 import useVuelidate from '@vuelidate/core';
 import { required, email, minLength } from '@vuelidate/validators';
 import { IMaskDirective } from "vue-imask";
@@ -54,6 +73,7 @@ export default defineComponent({
   name: 'VForm',
   components: {
     VButton,
+    VModal,
   },
   data: () => ({
     name: "",
@@ -63,6 +83,8 @@ export default defineComponent({
     phoneMask: {
       mask: "+{7}(000) 000-00-00",
     },
+    isShowError: false,
+    isShowSuccess: false,
   }),
   directives: {
     imask: IMaskDirective,
@@ -98,9 +120,17 @@ export default defineComponent({
         axios.post(api.postUser)
             .then(response => {
               // console.log(response);
+              if (response.data.result.status) {
+                this.isShowSuccess = true;
+              } else {
+                this.isShowError = true;
+              }
             })
             .catch(error => {
               // console.log(error);
+              if (error.message) {
+                this.isShowError = true;
+              }
             })
             .finally(() => {
               this.name = "";
@@ -123,6 +153,7 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   row-gap: 24px;
+  width: 380px;
 }
 
 .v-form__title {
@@ -142,6 +173,7 @@ export default defineComponent({
 }
 
 .v-form__input, .v-form__textarea {
+  width: 320px;
   border: 1px solid #dd33ff;
   border-radius: 32px;
   padding: 12px 16px;

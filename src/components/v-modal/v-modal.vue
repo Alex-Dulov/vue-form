@@ -1,25 +1,28 @@
 <template>
   <div class="v-modal">
     <div class="v-modal__header">
-      <button class="v-modal__button" type="button" @click="$emit('close')">
+      <button class="v-modal__button" type="button" @click="
+      $emit('close')
+
+">
         [x]
       </button>
     </div>
     <div class="v-modal__body">
-      <VForm/>
+      <slot>
+
+      </slot>
     </div>
   </div>
-  <div class="back" @click="$emit('close')"></div>
+  <!--<div class="back" @click="$emit('close')"></div>-->
 </template>
 
 <script>
 import { defineComponent } from 'vue';
-import VForm from "@/components/v-form/v-form";
 
 export default defineComponent({
   name: 'VModal',
   components: {
-    VForm,
   },
   data: () => ({
   }),
@@ -47,12 +50,19 @@ export default defineComponent({
 
 .v-modal {
   position: fixed;
-  min-width: 320px;
-  min-height: 480px;
+  top: 50%;
+  left: 50%;
+  min-width: 240px;
+  min-height: 180px;
   padding: 48px 32px;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
   background-color: #333333;
+  border: 1px solid #ffffff;
   border-radius: 32px;
   z-index: 9999;
+  transform: translate(-50%, -50%);
 }
 
 .v-modal__header {
