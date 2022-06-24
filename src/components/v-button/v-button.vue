@@ -39,4 +39,13 @@ export default defineComponent({
   background-color: #aa00ee;
 }
 
+.v-button--disable {
+  color: #dddddd;
+  background-color: #999999;
+}
+
+.v-button--disable:hover {
+  background-color: #999999;
+}
+
 </style>

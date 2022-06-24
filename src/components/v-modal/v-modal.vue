@@ -49,7 +49,7 @@ export default defineComponent({
   position: fixed;
   min-width: 320px;
   min-height: 480px;
-  padding: 32px;
+  padding: 48px 32px;
   background-color: #333333;
   border-radius: 32px;
   z-index: 9999;
@@ -57,7 +57,8 @@ export default defineComponent({
 
 .v-modal__header {
   width: 100%;
-  margin-top: -16px;
+  margin-top: -24px;
+  margin-bottom: 16px;
   text-align: right;
 }
 
