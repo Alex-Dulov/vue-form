@@ -10,7 +10,9 @@
   "dependencies": {
     "@vuelidate/core": "^2.0.0-alpha.41",
     "@vuelidate/validators": "^2.0.0-alpha.29",
+    "axios": "^0.27.2",
     "core-js": "^3.8.3",
+    "miragejs": "^0.1.45",
     "vue": "^3.2.13",
     "vue-imask": "^6.4.2"
   },

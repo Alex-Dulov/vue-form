@@ -18,7 +18,6 @@
         Wrong mail format
       </p>
     </label>
-
     <label class="v-form__label" for="phone">
       <input class="v-form__input" id="phone" type="tel" placeholder="Phone"
       v-model.trim.lazy="v$.phone.$model" v-imask="phoneMask">
@@ -43,6 +42,13 @@ import VButton from "@/components/v-button/v-button";
 import useVuelidate from '@vuelidate/core';
 import { required, email, minLength } from '@vuelidate/validators';
 import { IMaskDirective } from "vue-imask";
+import axios from "axios";
+import {makeServer} from "../../api/mirage";
+import {api} from "../../api/api";
+
+if (process.env.NODE_ENV === "development") {
+  makeServer();
+}
 
 export default defineComponent({
   name: 'VForm',
@@ -88,8 +94,22 @@ export default defineComponent({
   },
   methods: {
     onSubmit() {
-      if (this.v$.$invalid && this.v$.$anyDirty) {
-        console.log("submit");
+      if (!this.v$.$invalid && this.v$.$anyDirty) {
+        axios.get(api.postUser)
+            .then(response => {
+              console.log(response);
+            })
+            .catch(error => {
+              console.log(error);
+            })
+            .finally(() => {
+              this.name = "";
+              this.phone = "";
+              this.mail = "";
+              this.comment = "";
+              this.v$.$reset();
+              console.log("submit");
+            });
       }
     },
   },
