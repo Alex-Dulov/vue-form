@@ -1,5 +1,5 @@
 <template>
-  <button class="v-button">
+  <button class="base-button">
     {{ name }}
   </button>
 </template>
@@ -8,7 +8,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'VButton',
+  name: 'BaseButton',
   props: {
     name: String,
   },
@@ -16,7 +16,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.v-button {
+.base-button {
   height: 64px;
   min-width: 200px;
   border: 2px solid transparent;
@@ -35,16 +35,16 @@ export default defineComponent({
   background-color: #9900dd;
 }
 
-.v-button:hover {
+.base-button:hover {
   background-color: #aa00ee;
 }
 
-.v-button--disable {
+.base-button--disable {
   color: #dddddd;
   background-color: #999999;
 }
 
-.v-button--disable:hover {
+.base-button--disable:hover {
   background-color: #999999;
 }
 

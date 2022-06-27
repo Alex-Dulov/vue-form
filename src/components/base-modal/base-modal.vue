@@ -1,32 +1,33 @@
 <template>
-  <div class="v-modal">
-    <div class="v-modal__header">
-      <button class="v-modal__button" type="button" @click="
-      $emit('close')
-
-">
+  <div class="base-modal">
+    <div class="base-modal__header">
+      <button class="base-modal__button" type="button" @click="onClose">
         [x]
       </button>
     </div>
-    <div class="v-modal__body">
-      <slot>
-
-      </slot>
+    <div class="base-modal__body">
+      <div class="base-modal__title">
+        <slot name="title"></slot>
+      </div>
+      <slot name="content"></slot>
     </div>
   </div>
-  <!--<div class="back" @click="$emit('close')"></div>-->
+  <div class="back" @click="onClose"></div>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'VModal',
+  name: 'BaseModal',
   components: {
   },
   data: () => ({
   }),
   methods: {
+    onClose() {
+      this.$emit('close');
+    },
   },
   mounted () {
     document.body.addEventListener('keyup', e => {
@@ -44,11 +45,11 @@ export default defineComponent({
   left: 0;
   right: 0;
   background-color: #000000;
-  opacity: 0.2;
+  opacity: 0.4;
   z-index: 9998;
 }
 
-.v-modal {
+.base-modal {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -59,20 +60,25 @@ export default defineComponent({
   font-size: 20px;
   font-weight: 700;
   background-color: #333333;
-  border: 1px solid #ffffff;
+  border: 1px solid #666666;
   border-radius: 32px;
   z-index: 9999;
   transform: translate(-50%, -50%);
 }
 
-.v-modal__header {
+.base-modal__header {
   width: 100%;
   margin-top: -24px;
   margin-bottom: 16px;
   text-align: right;
 }
 
-.v-modal__button {
+.base-modal__title {
+  margin: 0 0 32px;
+  color: #ffffff;
+}
+
+.base-modal__button {
   color: #ffffff;
   margin-right: -16px;
   border: none;
@@ -82,7 +88,7 @@ export default defineComponent({
   cursor: pointer;
 }
 
-.v-modal__button:hover {
+.base-modal__button:hover {
   color: #dd33ff;
 }
 
