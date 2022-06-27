@@ -15,7 +15,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .base-button {
   height: 64px;
   min-width: 200px;
@@ -34,19 +34,19 @@ export default defineComponent({
   font-weight: 700;
   color: #ffffff;
   background-color: #9900dd;
-}
 
-.base-button:hover {
-  background-color: #aa00ee;
+  &:hover {
+    background-color: #aa00ee;
+  }
 }
 
 .base-button--disable {
   color: #dddddd;
   background-color: #999999;
-}
 
-.base-button--disable:hover {
-  background-color: #999999;
+  &:hover {
+    background-color: #999999;
+  }
 }
 
 </style>

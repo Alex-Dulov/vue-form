@@ -147,7 +147,7 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .base-form {
   position: relative;
   display: flex;
@@ -155,9 +155,6 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   row-gap: 24px;
-}
-
-.base-form__label {
 }
 
 .base-form__label-error {
@@ -179,9 +176,6 @@ export default defineComponent({
   color: #ffffff;
   font-size: 20px;
   font-weight: 700;
-}
-
-.base-form__input {
 }
 
 .base-form__textarea {

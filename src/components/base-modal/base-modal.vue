@@ -37,7 +37,7 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .back {
   position: fixed;
   top: 0;
@@ -86,10 +86,10 @@ export default defineComponent({
   font-size: 18px;
   font-weight: 700;
   cursor: pointer;
-}
 
-.base-modal__button:hover {
-  color: #dd33ff;
+  &:hover {
+    color: #dd33ff;
+  }
 }
 
 </style>
