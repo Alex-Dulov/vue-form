@@ -60,12 +60,6 @@ import BaseButton from "@/components/base-button/base-button.vue";
 import BaseModal from "@/components/base-modal/base-modal.vue";
 import { api } from "../../api/api";
 
-import { server } from "../../api/server";
-
-if (process.env.NODE_ENV === "development") {
-  server();
-}
-
 export default defineComponent({
   name: 'BaseForm',
   components: {
@@ -118,7 +112,6 @@ export default defineComponent({
       if (!this.v$.$invalid && this.v$.$anyDirty) {
         axios.post(api.postUser)
             .then(response => {
-              console.log("succes", response);
               if (response.status === 200) {
                 this.modalContent("Ваша заявка успешно отправлена");
                 this.isShowModal = true;

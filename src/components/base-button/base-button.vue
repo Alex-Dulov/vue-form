@@ -19,6 +19,7 @@ export default defineComponent({
 .base-button {
   height: 64px;
   min-width: 200px;
+  padding: 0 32px;
   border: 2px solid transparent;
   border-radius: 32px;
   text-decoration: none;

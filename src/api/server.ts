@@ -2,7 +2,7 @@ import { createServer, Model, Response } from "miragejs";
 import { api } from "./api";
 
 export function server({ environment = "development" } = {}) {
-    let server = createServer({
+    const server: object = createServer({
         environment,
         routes() {
             this.post(api.postUser, (params) => {

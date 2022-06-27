@@ -26,7 +26,11 @@ import { defineComponent } from 'vue';
 import BaseButton from './components/base-button/base-button.vue';
 import BaseModal from './components/base-modal/base-modal.vue';
 import BaseForm from './components/base-form/base-form.vue';
+import { server } from "./api/server";
 
+if (process.env.NODE_ENV === "development") {
+  server();
+}
 
 export default defineComponent({
   name: 'App',
