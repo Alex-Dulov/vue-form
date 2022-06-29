@@ -7,7 +7,7 @@
       Форма подачи заявки (не в модальном окне)
     </h1>
     <base-form/>
-    <base-modal v-if="isShowModal" @close="toggleModal">
+    <base-modal v-if="isShowModal" @close="toggleModal" key="100">
       <template v-slot:title>
         <h1>
           Форма подачи заявки

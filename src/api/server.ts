@@ -5,7 +5,7 @@ export function server({ environment = "development" } = {}) {
     const server: object = createServer({
         environment,
         routes() {
-            this.post(api.postUser, (params) => {
+            this.post(api, () => {
                 return Math.random() > 0.4 ? (new Response(200, {}, {
                     "data": {
                         "status": true,

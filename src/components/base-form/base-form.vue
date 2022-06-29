@@ -34,7 +34,7 @@
     <base-button name="Отправить заявку" type="submit" :class="{'base-button--disable': v$.$invalid && v$.$anyDirty }"/>
   </form>
 
-  <base-modal v-if="isShowModal" @close="toggleModal">
+  <base-modal v-if="isShowModal" @close="toggleModal" key="200">
     <template v-slot:title>
       <h4>
         {{ responseTitle }}
@@ -110,7 +110,7 @@ export default defineComponent({
   methods: {
     onSubmit() {
       if (!this.v$.$invalid && this.v$.$anyDirty) {
-        axios.post(api.postUser)
+        axios.post(api)
             .then(response => {
               if (response.status === 200) {
                 this.modalContent("Ваша заявка успешно отправлена");
